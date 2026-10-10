@@ -1,0 +1,1 @@
+- [Artifact runtime paths](artifact-runtime-paths.md) — service data files should resolve from both workspace-root and service-root working directories.
