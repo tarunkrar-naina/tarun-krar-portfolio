@@ -7,17 +7,12 @@
     "whatsappSecondary": "",
     "location": "Kaithal, Haryana"
   },
-  "social": {
-    "github": "https://github.com/tarunkrar-naina",
-    "linkedin": "https://www.linkedin.com/in/tarun-krar-595ba1422",
-    "instagram": "https://www.instagram.com/trun.lifts?igsi=Y3o1bzdjN21hdWZz&utm_source=qr",
-    "youtube": "https://youtube.com/@tarunlifts-g1f?si=7Ta3VRDPxHeI2BRZ",
-    "twitter": "",
-    "facebook": "",
-    "telegram": "",
-    "dribbble": "",
-    "behance": ""
-  },
+  "social": [
+    { "id": "social-github", "platform": "github", "label": "GitHub", "url": "https://github.com/tarunkrar-naina" },
+    { "id": "social-linkedin", "platform": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/tarun-krar-595ba1422" },
+    { "id": "social-instagram", "platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/trun.lifts?igsi=Y3o1bzdjN21hdWZz&utm_source=qr" },
+    { "id": "social-youtube", "platform": "youtube", "label": "YouTube", "url": "https://youtube.com/@tarunlifts-g1f?si=7Ta3VRDPxHeI2BRZ" }
+  ],
   "education": [
     {
       "id": "bca",

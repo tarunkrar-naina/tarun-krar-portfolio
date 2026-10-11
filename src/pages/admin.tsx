@@ -4,7 +4,7 @@ import { usePortfolioContent } from "@/components/PortfolioProvider";
 import type { PortfolioContent, EducationItem, CertificationItem, ProjectItem } from "@/lib/portfolio-config";
 
 const ADMIN_PASSWORD_KEY = 'portfolio_admin_password';
-const DEFAULT_PASSWORD = 'admin123';
+const DEFAULT_PASSWORD = 'tarunnurat';
 const SESSION_KEY = 'portfolio_admin_session';
 
 function Field({ label, value, onChange, multiline = false, type = "text" }: {
@@ -161,8 +161,8 @@ function AdminDashboard() {
   const updateProfile = (key: keyof PortfolioContent["profile"], value: string) => {
     setDraftState((current) => ({ ...current, profile: { ...current.profile, [key]: value } }));
   };
-  const updateSocial = (key: keyof PortfolioContent["social"], value: string) => {
-    setDraftState((current) => ({ ...current, social: { ...current.social, [key]: value } }));
+  const updateSocial = (index: number, key: keyof SocialItem, value: string) => {
+    setDraftState((current) => ({ ...current, social: current.social.map((item, i) => i === index ? { ...item, [key]: value } : item) }));
   };
   const updateEducation = (index: number, key: keyof EducationItem, value: string) => {
     setDraftState((current) => ({ ...current, education: current.education.map((item, i) => i === index ? { ...item, [key]: value } : item) }));
@@ -209,7 +209,7 @@ function AdminDashboard() {
   };
   const removeCertification = (index: number) => setDraftState((current) => ({ ...current, certifications: current.certifications.filter((_, i) => i !== index) }));
 
-  const addProject = () => {
+  const addSocial = () => {
     const newProject: ProjectItem = {
       id: `project-${Date.now()}`,
       title: "New Project",
@@ -309,10 +309,26 @@ function AdminDashboard() {
           </Panel>
 
           {/* Social */}
-          <Panel title="Social links" description="Update links used by every matching social icon.">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {(Object.keys(draftState.social) as Array<keyof PortfolioContent["social"]>).map((key) => (
-                <Field key={key} label={key} value={draftState.social[key]} onChange={(value) => updateSocial(key, value)} type="url" />
+          <Panel
+            title="Social links"
+            description="Add/remove social links. Platform helps pick the right icon."
+            action={
+              <button onClick={addSocial} className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-teal-300 px-4 py-2 text-sm font-bold text-teal-700 hover:bg-teal-50 transition-colors"><Plus className="h-4 w-4" /> Add social link</button>
+            }
+          >
+            <div className="space-y-5">
+              {draftState.social.map((item, index) => (
+                <div key={item.id} className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-bold text-teal-700">{item.label || `Social ${index + 1}`}</span>
+                    <button onClick={() => removeSocial(index)} className="inline-flex items-center gap-1 text-xs font-semibold text-red-500 hover:text-red-700"><Trash2 className="h-3.5 w-3.5" /> Remove</button>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <Field label="Label (display name)" value={item.label} onChange={(value) => updateSocial(index, "label", value)} />
+                    <Field label="Platform" value={item.platform} onChange={(value) => updateSocial(index, "platform", value)} />
+                    <Field label="URL" value={item.url} onChange={(value) => updateSocial(index, "url", value)} type="url" />
+                  </div>
+                </div>
               ))}
             </div>
           </Panel>

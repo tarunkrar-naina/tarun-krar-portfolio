@@ -7,16 +7,12 @@ export interface ProfileContent {
   location: string;
 }
 
-export interface SocialContent {
-  github: string;
-  linkedin: string;
-  instagram: string;
-  youtube: string;
-  twitter: string;
-  facebook: string;
-  telegram: string;
-  dribbble: string;
-  behance: string;
+export interface SocialItem {
+  id: string;
+  platform: string;     // e.g., "github", "linkedin", "instagram", "youtube", "twitter", "custom"
+  label: string;        // Display name: "GitHub", "LinkedIn", "Instagram", "My Blog", etc.
+  url: string;          // The actual link
+  icon?: string;        // Optional: custom icon name for known platforms
 }
 
 export interface EducationItem {
@@ -52,7 +48,7 @@ export interface ProjectItem {
 
 export interface PortfolioContent {
   profile: ProfileContent;
-  social: SocialContent;
+  social: SocialItem[];
   education: EducationItem[];
   certifications: CertificationItem[];
   projects: ProjectItem[];
@@ -67,17 +63,12 @@ export const defaultPortfolioContent: PortfolioContent = {
     whatsappSecondary: "",
     location: "Kaithal, Haryana",
   },
-  social: {
-    github: "https://github.com/tarunkrar-naina",
-    linkedin: "https://www.linkedin.com/in/tarun-krar-595ba1422",
-    instagram: "https://www.instagram.com/trun.lifts?igsi=Y3o1bzdjN21hdWZz&utm_source=qr",
-    youtube: "https://youtube.com/@tarunlifts-g1f?si=7Ta3VRDPxHeI2BRZ",
-    twitter: "",
-    facebook: "",
-    telegram: "",
-    dribbble: "",
-    behance: "",
-  },
+  social: [
+    { id: "social-github", platform: "github", label: "GitHub", url: "https://github.com/tarunkrar-naina" },
+    { id: "social-linkedin", platform: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/tarun-krar-595ba1422" },
+    { id: "social-instagram", platform: "instagram", label: "Instagram", url: "https://www.instagram.com/trun.lifts?igsi=Y3o1bzdjN21hdWZz&utm_source=qr" },
+    { id: "social-youtube", platform: "youtube", label: "YouTube", url: "https://youtube.com/@tarunlifts-g1f?si=7Ta3VRDPxHeI2BRZ" },
+  ],
   education: [
     {
       id: "bca",

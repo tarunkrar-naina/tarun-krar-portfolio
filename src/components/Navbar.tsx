@@ -33,6 +33,10 @@ export default function Navbar() {
   const [activeId, setActiveId] = useState("");
   const { content } = usePortfolioContent();
 
+  // Find social links by platform
+  const githubLink = content.social.find(s => s.platform === "github")?.url || "https://github.com";
+  const linkedinLink = content.social.find(s => s.platform === "linkedin")?.url || "https://linkedin.com";
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -102,28 +106,28 @@ export default function Navbar() {
           <div className="h-6 w-px bg-primary/20 mx-2"></div>
 
           <div className="flex gap-3">
-             <a href={content.social.github} target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full border border-primary/40 text-primary flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
-              <GitHubIcon />
-            </a>
-             <a href={content.social.linkedin} target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full border border-primary/40 text-primary flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
-              <LinkedInIcon />
-            </a>
+             <a href={githubLink} target="_blank" rel="noopener noreferrer"
+               className="w-8 h-8 rounded-full border border-primary/40 text-primary flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
+               <GitHubIcon />
+             </a>
+             <a href={linkedinLink} target="_blank" rel="noopener noreferrer"
+               className="w-8 h-8 rounded-full border border-primary/40 text-primary flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
+               <LinkedInIcon />
+             </a>
              <a href={`https://wa.me/${content.profile.whatsapp}`} target="_blank" rel="noopener noreferrer"
-               aria-label={`WhatsApp ${content.profile.whatsapp}`}
-              className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
-              <WhatsAppIcon />
-            </a>
-          </div>
+                aria-label={`WhatsApp ${content.profile.whatsapp}`}
+               className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_12px_rgba(23,154,138,0.4)]">
+               <WhatsAppIcon />
+             </a>
+           </div>
         </div>
 
         {/* Mobile hamburger placeholder */}
         <div className="md:hidden flex gap-3">
            <a href={`https://wa.me/${content.profile.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp ${content.profile.whatsapp}`} className="text-primary">
-            <WhatsAppIcon />
-          </a>
-        </div>
+             <WhatsAppIcon />
+           </a>
+         </div>
       </div>
     </motion.nav>
   );
