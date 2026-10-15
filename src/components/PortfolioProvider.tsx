@@ -26,7 +26,7 @@ export function PortfolioProvider({ children }: { children: ReactNode }) {
 
   const loadContent = async () => {
     try {
-      const response = await fetch('/src/data/portfolio.json', { cache: 'no-store' });
+      const response = await fetch('/data/portfolio.json', { cache: 'no-store' });
       if (response.ok) {
         const data = (await response.json()) as PortfolioContent;
         setContent(data);

@@ -57,9 +57,9 @@ export interface PortfolioContent {
 export const defaultPortfolioContent: PortfolioContent = {
   profile: {
     email: "nainatarun41@gmail.com",
-    phonePrimary: "9991585681",
+    phonePrimary: "8950056231",
     phoneSecondary: "",
-    whatsapp: "9991585681",
+    whatsapp: "8950056231",
     whatsappSecondary: "",
     location: "Kaithal, Haryana",
   },

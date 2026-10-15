@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LockKeyhole, Save, LogOut, Plus, Trash2, ExternalLink, ShieldCheck, Download, Key, AlertCircle, RotateCcw } from "lucide-react";
 import { usePortfolioContent } from "@/components/PortfolioProvider";
 import type { PortfolioContent, EducationItem, CertificationItem, ProjectItem } from "@/lib/portfolio-config";
@@ -143,13 +143,15 @@ function AdminDashboard() {
   const [saving, setSaving] = useState(false);
   const [showDraftBanner, setShowDraftBanner] = useState(false);
 
-  // Initialize draft from localStorage or content
+  // Initialize draft from localStorage (draft prop) or content
   const [draftState, setDraftState] = useState<PortfolioContent>(() => draft || content);
 
-  // Sync draftState with draft prop (from localStorage on load)
+  // Sync draftState with draft prop once on mount (when draft loads from localStorage)
+  const draftSyncedRef = useRef(false);
   useEffect(() => {
-    if (draft && draft !== draftState) {
+    if (draft && !draftSyncedRef.current) {
       setDraftState(draft);
+      draftSyncedRef.current = true;
     }
   }, [draft]);
 
@@ -210,6 +212,17 @@ function AdminDashboard() {
   const removeCertification = (index: number) => setDraftState((current) => ({ ...current, certifications: current.certifications.filter((_, i) => i !== index) }));
 
   const addSocial = () => {
+    const newSocial: SocialItem = {
+      id: `social-${Date.now()}`,
+      platform: "custom",
+      label: "New Social",
+      url: "",
+    };
+    setDraftState((current) => ({ ...current, social: [...current.social, newSocial] }));
+  };
+  const removeSocial = (index: number) => setDraftState((current) => ({ ...current, social: current.social.filter((_, i) => i !== index) }));
+
+  const addProject = () => {
     const newProject: ProjectItem = {
       id: `project-${Date.now()}`,
       title: "New Project",
