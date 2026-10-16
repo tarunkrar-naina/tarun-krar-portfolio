@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LockKeyhole, Save, LogOut, Plus, Trash2, ExternalLink, ShieldCheck, Download, Key, AlertCircle, RotateCcw } from "lucide-react";
 import { usePortfolioContent } from "@/components/PortfolioProvider";
-import type { PortfolioContent, EducationItem, CertificationItem, ProjectItem } from "@/lib/portfolio-config";
+import type { PortfolioContent, EducationItem, CertificationItem, ProjectItem, SocialItem } from "@/lib/portfolio-config";
 
 const ADMIN_PASSWORD_KEY = 'portfolio_admin_password';
 const DEFAULT_PASSWORD = 'tarunnurat';
@@ -88,7 +88,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
           <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-teal-200">
             <Key className="h-7 w-7 text-white" />
           </div>
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Tarun's Portfolio</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Tarun Krar's Portfolio</p>
           <h1 className="text-3xl font-bold text-gray-900">First-time Setup</h1>
           <p className="mt-2 text-sm leading-relaxed text-gray-500">Set a password to secure your admin panel.</p>
           <form onSubmit={setNewPassword} className="mt-7 space-y-4">
@@ -115,7 +115,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
         <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-teal-200">
           <LockKeyhole className="h-7 w-7 text-white" />
         </div>
-        <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Tarun's Portfolio</p>
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Tarun Krar's Portfolio</p>
         <h1 className="text-3xl font-bold text-gray-900">Admin panel</h1>
         <p className="mt-2 text-sm leading-relaxed text-gray-500">Sign in to update your portfolio content.</p>
         <form onSubmit={submit} className="mt-7 space-y-4">

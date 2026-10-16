@@ -43,7 +43,7 @@ export default function HireMe() {
 
      // Build one message and open it for both WhatsApp numbers.
     const text = encodeURIComponent(
-      `Hi Tarun! 👋 I'd like to hire you.\n\n` +
+      `Hi Tarun Krar! 👋 I'd like to hire you.\n\n` +
       `*Name:* ${form.name}\n` +
       `*Contact:* ${form.contact}\n` +
        `*Service Needed:* ${requestedService}\n` +
@@ -150,7 +150,7 @@ export default function HireMe() {
                         🚀
                       </motion.div>
                       <h3 className="text-xl font-heading text-foreground">Opening WhatsApp…</h3>
-                      <p className="text-sm text-foreground/55">Your message is ready to send to Tarun!</p>
+                      <p className="text-sm text-foreground/55">Your message is ready to send to Tarun Krar!</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

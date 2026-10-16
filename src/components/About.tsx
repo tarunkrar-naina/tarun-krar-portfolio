@@ -17,7 +17,7 @@ export default function About() {
           className="relative mx-auto max-w-md w-full"
         >
           <div className="aspect-[4/5] rounded-3xl overflow-hidden border-4 border-white shadow-[0_20px_50px_rgba(23,154,138,0.2)] bg-card">
-            <img src={avatarImg} alt="Tarun" className="w-full h-full object-cover" />
+            <img src={avatarImg} alt="Tarun Krar" className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary rounded-full -z-10 blur-2xl"></div>
           <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full -z-10 blur-2xl"></div>

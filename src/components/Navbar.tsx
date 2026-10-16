@@ -75,13 +75,20 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Logo — no dot */}
+        {/* Logo — image + wordmark */}
         <motion.span
           whileHover={{ scale: 1.05 }}
-          className="text-2xl font-display font-bold tracking-wider text-primary cursor-pointer select-none"
+          className="flex items-center gap-2.5 cursor-pointer select-none"
           onClick={() => scrollTo("hero")}
         >
-          TARUN
+          <img
+            src="/assets/logo-256.png"
+            alt="Tarun Krar logo"
+            className="h-9 w-9 md:h-10 md:w-10 rounded-xl object-cover ring-1 ring-primary/25 shadow-sm bg-white"
+          />
+          <span className="text-xl md:text-2xl font-display font-bold tracking-wider text-primary whitespace-nowrap">
+            TARUN KRAR
+          </span>
         </motion.span>
 
         <div className="hidden md:flex items-center gap-6">

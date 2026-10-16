@@ -53,6 +53,8 @@ const AnimatedBackground = () => (
 export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
   const { content } = usePortfolioContent();
+  const githubLink = content.social.find(s => s.platform === "github")?.url || "https://github.com";
+  const linkedinLink = content.social.find(s => s.platform === "linkedin")?.url || "https://linkedin.com";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -76,9 +78,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-heading text-7xl md:text-8xl lg:text-9xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4 drop-shadow-sm"
+            className="font-heading text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4 drop-shadow-sm"
           >
-            TARUN
+            <span className="block">TARUN</span>
+            <span className="block">KRAR</span>
           </motion.h1>
 
           {/* Rotating subtitle — bold */}
@@ -114,7 +117,7 @@ export default function Hero() {
             className="flex gap-4 flex-wrap"
           >
             <a
-              href={content.social.github}
+              href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary font-medium hover:scale-105 transition-transform duration-300 glow-teal-sm bg-white/50 backdrop-blur-sm"
@@ -122,7 +125,7 @@ export default function Hero() {
               <GitHubIcon /> GitHub
             </a>
             <a
-              href={content.social.linkedin}
+              href={linkedinLink}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:scale-105 transition-transform duration-300 glow-teal shadow-lg"
@@ -144,7 +147,7 @@ export default function Hero() {
             <div className="w-72 h-72 md:w-96 md:h-96 rounded-[2rem] overflow-hidden ring-4 ring-primary/30 relative z-10 bg-white cursor-pointer"
               onClick={() => window.open(avatarImg, '_blank')}
             >
-              <img src={avatarImg} alt="Tarun" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={avatarImg} alt="Tarun Krar" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </motion.div>
         </div>
